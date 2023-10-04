@@ -7,7 +7,7 @@ int main() {
     int id;
     double gpa;
     
-    while (true) {
+    do {
         std::cout << "Menu:\n";
         std::cout << "1. Add Student\n";
         std::cout << "2. Insert Student\n";
@@ -44,13 +44,14 @@ int main() {
                 list.displayList();
                 break;
             case 5:
-                std::cout << "Exiting program. Goodbye!";
+                std::cout << "Exiting program.";
                 break;
             default:
                 std::cout << "Invalid choice. Please try again.\n";
         }
+    } while (choice != 5);
         
         
         return 0;
-    }
 }
+
