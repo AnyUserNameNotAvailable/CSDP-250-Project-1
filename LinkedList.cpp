@@ -65,28 +65,29 @@ void Studentlist::deleteStudentNode(int studentid, double gradePointAvg){
     StudentNode* nodePtr;
     StudentNode* prevPtr = nullptr;
        
-       if(!head) {
-           std::cout << "\nCannot Delete An Empty List\n";
-           return;
-       }
-       if(head->id == studentid) {
-           nodePtr = head->next;
-           delete head;
-           head = nodePtr;
-       }
-       else {
-           nodePtr = head;
-           
-           while(nodePtr->id != studentid && nodePtr->next != nullptr) {
-               prevPtr = nodePtr;
-               nodePtr =nodePtr->next;
-           }
-           if(nodePtr) {
-               prevPtr->next = nodePtr->next;
-               delete nodePtr;
-           }
-       }
-}
+    if (!head) {
+            std::cout << "\nCannot Delete An Empty List\n";
+            return;
+        }
+    if (head->id == studentid && head->gpa == gradePointAvg) {
+            nodePtr = head->next;
+            delete head;
+            head = nodePtr;
+        } 
+    else {
+            nodePtr = head;
+            while (nodePtr && (nodePtr->id != studentid || nodePtr->gpa != gradePointAvg)) {
+                prevPtr = nodePtr;
+                nodePtr = nodePtr->next;
+            }
+            
+        if (nodePtr) {
+                prevPtr->next = nodePtr->next;
+                delete nodePtr;
+            }
+        }
+    }
+
 void Studentlist::displayList() const{
     StudentNode* nodePtr;
     nodePtr = head;
